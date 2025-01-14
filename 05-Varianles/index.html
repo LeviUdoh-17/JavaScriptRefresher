@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <h1>Cart Quantity</h1>
+    <button>Show Quantity</button>
+    <button>Add to Cart</button>
+    <button>+2</button>
+    <button>+3</button>
+    <button>Reset Cart</button>
+
+    <script>
+        let cartQuantity = 0;
+        const showQuantity = document.querySelector('button');
+        const addToCart = document.querySelectorAll('button')[1];
+        const addTwo = document.querySelectorAll('button')[2];
+        const addThree = document.querySelectorAll('button')[3];
+        const resetCart = document.querySelectorAll('button')[4];
+
+        showQuantity.addEventListener('click', () => {
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        });
+
+        addToCart.addEventListener('click', () => {
+            cartQuantity++;
+            console.log(`cartQuantity: ${cartQuantity}`);
+        });
+
+        addTwo.addEventListener('click', () => {
+            cartQuantity+=2;
+            console.log(`cartQuantity: ${cartQuantity}`);
+        });
+
+        addThree.addEventListener('click', () => {
+            cartQuantity+=3;
+            console.log(`cartQuantity: ${cartQuantity}`);
+        });
+
+        resetCart.addEventListener('click', () => {
+            cartQuantity = 0;
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        }); 
+    </script>
+</body>
+</html>
