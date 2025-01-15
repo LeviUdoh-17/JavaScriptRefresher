@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll('button');
 const rock = buttons[0];
 const paper = buttons[1];
 const scissors = buttons[2];
+const reset = buttons[3];
 
 function pickComputerMove(){
     const randomNumber = Math.random();
@@ -28,7 +29,6 @@ function playGame(playerMove){
         } else if (computerMove == 'Scissors'){
             result = 'You Win.';
         }
-        alert(`You picked Rock, the computer picked ${computerMove}, ${result}`);
     } else if (playerMove == 'Paper'){    
         if(computerMove == 'Rock'){
             result = 'You Win.';
@@ -37,7 +37,6 @@ function playGame(playerMove){
         } else if (computerMove == 'Scissors'){
             result = 'You Lose.';
         }
-        alert(`You picked Paper, the computer picked ${computerMove}, ${result}`);
     } else if (playerMove == 'Scissors'){    
         if(computerMove == 'Rock'){
             result = 'You Lose.';
@@ -46,11 +45,30 @@ function playGame(playerMove){
         } else if (computerMove == 'Scissors'){
             result = 'Tie.';
         }
-        alert(`You picked Scissors, the computer picked ${computerMove}, ${result}`);
+    }
+    if(result === "You Win."){
+        scores.win += 1;
+    } else if(result === "You Lose."){
+        scores.losses += 1;
+    } else if(result === 'Tie.'){
+        scores.ties += 1;
     }
 
+    alert(`You picked ${playerMove}, the computer picked ${computerMove}, ${result}\nWins: ${scores.win}, Losses: ${scores.losses}, Ties: ${scores.ties}`);
 }
 
-rock.addEventListener('click', playGame('Rock'));
-paper.addEventListener('click', playGame('Paper'));
-scissors.addEventListener('click', playGame('Scissors'));
+let scores = {
+    win: 0,
+    losses: 0,
+    ties: 0
+};
+
+reset.addEventListener('click', () => {
+    scores.win = 0;
+    scores.losses = 0;
+    scores.ties = 0;
+});
+
+rock.addEventListener('click', () => playGame('Rock'));
+paper.addEventListener('click', () => playGame('Paper'));
+scissors.addEventListener('click', () => playGame('Scissors'));
