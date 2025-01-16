@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <script>
+        const array1 = ['hello', 'world', 'search', 'good'];
+        const array2 = ['not', 'found'];
+
+        function findSearchIndex(array) {
+            let index = -1;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === 'search') {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        console.log(findSearchIndex(array1)); 
+        console.log(findSearchIndex(array2)); 
+
+        const array3 = ['hello', 'world', 'search', 'good', 'search'];
+
+        function findFirstSearchIndex(array) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === 'search') {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        console.log(findFirstSearchIndex(array3));
+
+
+        function findIndex(array, word) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === word) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'red')); 
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'yellow'));
+        
+        function removeEgg(foods) {
+            return foods.filter(food => food !== 'egg');
+        }
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); 
+
+        function removeEgg(foods) {
+            let eggCount = 0;
+            return foods.filter(food => {
+                if (food === 'egg' && eggCount < 2) {
+                    eggCount++;
+                    return false;
+                }
+                return true;
+            });
+        }
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); 
+
+        function removeEgg(foods) {
+            let eggCount = 0;
+            return foods.reverse().filter(food => {
+                if (food === 'egg' && eggCount < 2) {
+                    eggCount++;
+                    return false;
+                }
+                return true;
+            }).reverse();
+        }
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); 
+        
+        function removeEgg(foods) {
+            let eggCount = 0;
+            let reversedFoods = foods.slice().reverse();
+            let result = reversedFoods.filter(food => {
+                if (food === 'egg' && eggCount < 2) {
+                    eggCount++;
+                    return false;
+                }
+                return true;
+            }).reverse();
+            return result;
+        }
+        
+        const foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+        console.log(removeEgg(foods));
+        console.log(foods); 
+
+        for (let i = 1; i <= 20; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                console.log('FizzBuzz');
+            } else if (i % 3 === 0) {
+                console.log('Fizz');
+            } else if (i % 5 === 0) {
+                console.log('Buzz');
+            } else {
+                console.log(i);
+            }
+        }
+        
+    </script>
+</body>
+</html>

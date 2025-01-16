@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+</head>
+<body>
+    <script>
+        const multiply = (a, b) => a * b;
+        console.log(multiply(2, 3)); 
+        console.log(multiply(7, 10));
+
+        const countPositive = (nums) => {
+            let count = 0;
+            nums.forEach(num => {
+                if (num > 0) {
+                    count++;
+                }
+            });
+            return count;
+        };        
+        console.log(countPositive([1, -3, 5])); 
+        console.log(countPositive([-2, 3, -5, 7, 10])); 
+
+        const addNum = (array, num) => array.map(n => n + num);
+        console.log(addNum([1, 2, 3], 2)); 
+        console.log(addNum([-2, -1, 0, 99], 2)); 
+    
+        /* const removeEgg = (foods) => foods.filter(food => food !== 'egg');
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); */
+
+        const removeEgg = (foods) => {
+            let eggCount = 0;
+            return foods.filter(food => {
+                if (food === 'egg' && eggCount < 2) {
+                    eggCount++;
+                    return false;
+                }
+                return true;
+            });
+        };
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham'])); 
+
+        const autoPlayButton = document.getElementById('autoPlayButton');
+        function updateAutoPlayButton(isAutoPlaying) {
+            autoPlayButton.textContent = isAutoPlaying ? 'Stop Playing' : 'Auto Play';
+        }
+        let isAutoPlaying = false;
+        autoPlayButton.addEventListener('click', () => {
+            isAutoPlaying = !isAutoPlaying;
+            updateAutoPlayButton(isAutoPlaying);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'a' || event.key === 'A') {
+                isAutoPlaying = !isAutoPlaying;
+                updateAutoPlayButton(isAutoPlaying);
+            }
+        });
+
+        const resetScoreButton = document.getElementById('resetScoreButton');
+        resetScoreButton.addEventListener('click', () => {
+            document.addEventListener('keydown', (event) => { if (event.key === 'Backspace') { showConfirmationMessage(); } });
+
+        });
+
+        function showConfirmationMessage() {
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block';
+        }
+        
+        function hideConfirmationMessage() {
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'none';
+        }
+        
+        document.getElementById('yesButton').addEventListener('click', () => {
+            // Reset score logic
+            hideConfirmationMessage();
+        });
+        
+        document.getElementById('noButton').addEventListener('click', () => {
+            hideConfirmationMessage();
+        });
+        
+        
+    </script>
+</body>
+</html>
